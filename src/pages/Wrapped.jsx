@@ -2,52 +2,70 @@ import React, { useState } from 'react'
 import axios from "axios";
 import { NavLink } from 'react-router-dom';
 import logo from "../assets/logo.png"
-import "../App.css"
 import CircularProgress from '@mui/material/CircularProgress';
+import { useRecoilValue } from 'recoil';
+import { inputState } from '../atoms/Input';
+import { toast } from 'react-toastify';
+import './Wrapped.css'
+import WrappedCard from '../components/WrappedCard';
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from 'react-confetti'
+import { useTimeout } from 'react-use';
 
 
 const Wrapped = () => {
     const [totalContributions, setTotalContributions] = useState(0);
     const [loading, setLoading] = useState(false);
+    const inputText =  useRecoilValue(inputState);
+    const { width, height } = useWindowSize()
+    const [isComplete] = useTimeout(4000);
+    
+    console.log("inputText", inputText);
+    
 
-    const handleClick = async () => {
-        setLoading(true);
-        try {
-            const res = await axios.get('https://api.github.com/users/9520prashant/repos');
-            const reposCreatedIn2023 = res.data.filter(repo => {
-                const creationDate = new Date(repo.created_at);
-                return creationDate.getFullYear() === 2023;
-            });
-
-            const fetchContributions = async (repo) => {
-                const c = await axios.get(`https://api.github.com/repos/9520prashant/${repo}/contributors`);
-                return c.data[0].contributions;
-            }
-
-            const contributionPromises = reposCreatedIn2023.map(repo => fetchContributions(repo.name));
-
-            const contributions = await Promise.all(contributionPromises);
-
-            const total = contributions.reduce((acc, curr) => acc + curr, 0);
-
-            setTotalContributions(total);
-            console.log("totalContributions ", total);
-        } catch (error) {
-            console.error("Error fetching data:", error);
+    const notify = () => {
+        toast.success('Congratulations!', {
+          autoClose: 3000,
+          hideProgressBar: true,
+          className: 'celebration-toast',
+          bodyClassName: 'celebration-toast-body',
+        });
+    }
+    
+    const handleClick1 = async() =>{
+        try{
+            setLoading(true);
+            const res = await axios.get(`https://github-wrapped-one.vercel.app/github-wrapped/api/v1/github-stats/${inputText}`)
+            console.log(res.data);
+            setTotalContributions(res.data.contributions2023)
+        }catch(err){
+            console.log("error aaya", err);
         } finally {
             setLoading(false);
         }
+       notify();
     }
 
     return (
         <>
-            {loading && <CircularProgress />}
             <NavLink to="https://github.com" target="_blank">
                 <img src={logo} className="logo" alt="Vite logo" />
-            </NavLink>
-
-            <button onClick={handleClick}>Get</button>
-            {totalContributions !== 0 && <p>Total Contributions: {totalContributions}</p>}
+            </NavLink><br />
+            {loading && <CircularProgress />}<br/>
+            {totalContributions === 0 && <button onClick={handleClick1}>Get</button>}
+            {
+              totalContributions !== 0 &&
+                <>
+                <button onClick={handleClick1}>Get Wrapped 2</button><br /><br />
+                <Confetti
+                    width={width}
+                    height={height}
+                    recycle={!isComplete()}
+                />
+                <WrappedCard/>
+                </>
+            }
+            
         </>
     )
 }
