@@ -10,3 +10,34 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+
+.card-wrapped{
+  width: 70%;
+  height:10%;
+}
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.div1{
+  height: 80vh;
+  background-color: #2f2f2f;
+  /* z-index: -1; */
+  position: relative;
+}
+.div1 > h2{
+  font-weight: 900;
+}
+
+.share-wrapper{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.share-wrapper > button{
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}

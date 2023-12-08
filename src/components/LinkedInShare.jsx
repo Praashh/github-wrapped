@@ -5,7 +5,7 @@ const LinkedInShare = ({url, text}) => {
   return (
     <div>
       <LinkedinShareButton url={url} title={text}>
-         Share on LinkedIn
+         Share on 
       </LinkedinShareButton>
     </div>
   )

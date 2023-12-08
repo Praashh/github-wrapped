@@ -7,11 +7,10 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import { NavLink } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { inputState } from "../atoms/Input";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import {useNavigate} from "react-router-dom"
-
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+import BackgroundVideo from "../components/BackgroundVideo";
 
 const Home = () => {
   const [wrappedInput, setWrappedInput] = useState(false);
@@ -19,20 +18,19 @@ const Home = () => {
   const notify = () => toast("Wow so easy!");
   const navigate = useNavigate();
 
-  useEffect(()=>{
-    setInputText('');
-  },[])
+  useEffect(() => {
+    setInputText("");
+  }, []);
 
-  
   const handleWrapNow = () => {
     if (!inputText) {
-      navigate('/')
+      navigate("/");
       toast.error("Invalid Username!");
       return;
     }
-    notify(); 
+    notify();
     navigate("/wrapped");
-    return;    
+    return;
   };
 
   return (
@@ -40,12 +38,19 @@ const Home = () => {
       <NavLink to="https://github.com" target="_blank">
         <img src={logo} className="logo" alt="Vite logo" />
       </NavLink>
-      <Typography variant="h2" margin={3}>
-        Get Your
-        <Typography variant="h4" className="typewrite">
+      <Typography variant="h3" margin={3} style={{ fontWeight: "900" }}>
+        Get Your{" "}
+        <span style={{ fontWeight: "900", color: "rgb(35 177 62)" }}>
+          GitHub 2023 Wrapped.
+        </span>
+        <Typography
+          variant="h5"
+          className="typewrite"
+          style={{ fontWeight: "900" }}
+        >
           <Typewriter
             options={{
-              strings: ["GitHub 2023 Wrapped."],
+              strings: ["#flexYourGithubWrapped", "#githubWrapped2023"],
               autoStart: true,
               loop: true,
             }}
@@ -53,7 +58,7 @@ const Home = () => {
         </Typography>
       </Typography>
       {!wrappedInput ? (
-        <button onClick={() => setWrappedInput((prev) => !prev)} >
+        <button onClick={() => setWrappedInput((prev) => !prev)}>
           <span className="btn">
             <span>Let's Wrapped</span> <GitHubIcon />
           </span>
@@ -62,21 +67,17 @@ const Home = () => {
         <div className="text-field-wrapper">
           <TextField
             id="filled-basic"
-            label="Username"
+            label="GitHub Username"
             variant="filled"
             className="input"
             value={inputText}
-            onChange={(e) =>  setInputText(e.target.value)}
+            onChange={(e) => setInputText(e.target.value)}
             required={true}
           />
-            <Button variant="contained" onClick={handleWrapNow}>
-                Wrapped Now
-            </Button>
+          <button onClick={handleWrapNow}>Wrapped Now</button>
         </div>
       )}
-      <Typography variant="subtitle1" margin={5} className="read-the-docs">
-        Click on the button to get your github wrapped
-      </Typography>
+      <BackgroundVideo />
     </>
   );
 };

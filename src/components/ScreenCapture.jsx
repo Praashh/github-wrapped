@@ -1,11 +1,10 @@
-import React from 'react';
-import html2canvas from 'html2canvas';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import {imageState} from "../atoms/ImageURL"
-import TwitterShare from './TwitterShare';
+import React from "react";
+import html2canvas from "html2canvas";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { imageState } from "../atoms/ImageURL";
+import TwitterShare from "./TwitterShare";
 
 const ScreenCapture = () => {
-
   const [inputURL, setImageURL] = useRecoilState(imageState);
   const img = useRecoilValue(imageState);
 
@@ -23,9 +22,12 @@ const ScreenCapture = () => {
   return (
     <div>
       <div>
-        <button style={{ marginBottom: '10px' }} onClick={captureFullScreen}>
-          
-          <TwitterShare url={'www.google.com'} text={'My GitHub Wrapped'} image={img} />
+        <button style={{ marginBottom: "10px" }} onClick={captureFullScreen}>
+          <TwitterShare
+            url={"www.google.com"}
+            text={"My GitHub Wrapped"}
+            image={img}
+          />
         </button>
       </div>
     </div>
