@@ -50,8 +50,12 @@ const Wrapped = () => {
       console.log("data2", lang.data.data);
       setLanguages(lang.data.data);
       console.log("setted langs", Languages);
-      if (res.data.contributions2023 === "") {
+      if (res.data.contributions2023 === "" && lang.data.data == []) {
         toast.error("Invalid Username!");
+        return;
+      }
+      if(res.data.contributions2023 === ''){
+        toast.error("No Contributions Found!");
         return;
       }
       setTotalContributions(res.data.contributions2023);
