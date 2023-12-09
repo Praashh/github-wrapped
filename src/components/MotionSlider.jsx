@@ -6,7 +6,7 @@ const MotionSlider = () => {
     <div style={{ marginTop: "-1rem", marginBottom: "1rem", width: "100%" }}>
       <Marquee
         pauseOnHover
-        style={{ display: "flex", justifyContent: "space-between" }}
+        // style={{ display: "flex", justifyContent: "space-between" }}
       >
         <span
           style={{
