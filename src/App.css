@@ -93,5 +93,8 @@
   margin-top: 2rem;
   object-fit: cover;
 }
-
-
+.team{
+  position: absolute;
+  left: 44%;
+  bottom: 2%;
+}

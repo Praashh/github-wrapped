@@ -41,3 +41,23 @@
   justify-content: center;
   gap: 2px;
 }
+
+.contribution-icon-wrapper >img{
+  filter: drop-shadow(0 0 1em #ade9c5aa)
+}
+
+.content-wrapper{
+  width: 120%;
+  height:23vh;
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  bottom: -5%;
+  right: 10%;
+}
+.content-wrapper >{
+  display: flex;
+  flex-direction: column;
+}

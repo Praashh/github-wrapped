@@ -1,4 +1,5 @@
 import * as React from 'react';
+import githubContribution from "../assets/github-contribution.png"
 import { inputState } from '../atoms/Input';
 import { useRecoilValue } from 'recoil';
 import '../pages/Wrapped.css'
@@ -10,7 +11,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedIcon from '@mui/icons-material/LinkedIn';
 import PieChart from './PieChart';
 
-export default function WrappedCard() {
+export default function WrappedCard({contributions, commits, issues, PRs, stars}) {
  
   const inputText =  useRecoilValue(inputState);
 
@@ -28,6 +29,29 @@ export default function WrappedCard() {
       <div className='div1'>
           <h2>Hy {inputText}, Here is Your <span style={{fontWeight:'900', color:'rgb(35 177 62)'}}>GitHub 2023 Wrapped</span></h2>
           <span style={{color:'rgb(75, 207, 167)', fontWeight:'900', fontSize:'1.5rem'}}>Your Contributions Stats</span>
+          <div className='contribution-icon-wrapper'><img src={githubContribution} width={260} height={200}/></div>
+          <div className='content-wrapper'>
+              <div>
+                <span style={{color:'rgb(35 177 62)', fontWeight:'900', fontSize:'1.5rem'}}>{contributions}</span>
+                <p style={{fontWeight:'800'}}>Total Contributions</p>
+              </div>
+              <div>
+                <span style={{color:'#FF9800', fontWeight:'900', fontSize:'1.5rem'}}>{commits}</span>
+                <p style={{fontWeight:'800'}}>Total Commits</p>
+              </div>
+              <div>
+                <span style={{color:'#00BCD4', fontWeight:'900', fontSize:'1.5rem'}}>{PRs}</span>
+                <p style={{fontWeight:'800'}}>Total PRs</p>
+              </div>
+              <div>
+                <span style={{color:'#FF9800', fontWeight:'1000', fontSize:'1.5rem'}}>{issues}</span>
+                <p style={{fontWeight:'800'}}>Total Issues</p>
+              </div>
+              <div>
+                <span style={{color:'yellow', fontWeight:'900', fontSize:'1.5rem'}}>{stars}</span>
+                <p style={{fontWeight:'800'}}>Total Stars</p>
+              </div>
+          </div>
       </div>
       <div className='div1'>
           <h2>Hy {inputText}, Here is Your <span style={{fontWeight:'900', color:'rgb(35 177 62)'}}>GitHub 2023 Wrapped</span></h2>

@@ -11,17 +11,10 @@ const PieChart = () => {
   useEffect(() => {
     if (chartContainer && chartContainer.current) {
       const data = {
-        labels: [
-          `${languages[0].name}`,
-          `${languages[1].name}`,
-          `${languages[2].name}`,
-          `${languages[3].name}`,
-          `${languages[4].name}`,
-          `${languages[5].name}`,
-        ],
+        labels: languages.map(language => language.name),
         datasets: [
           {
-            data: [19, 12, 7, 5, 4, 2],
+            data: languages.map((language, index) => languages.length-index),
             backgroundColor: [
               "#646cffaa",
               "rgb(75, 207, 167)",

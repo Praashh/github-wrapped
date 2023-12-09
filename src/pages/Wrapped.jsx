@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import gift from "../assets/gift.gif"
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
@@ -15,6 +16,10 @@ import { useTimeout } from "react-use";
 
 const Wrapped = () => {
   const [totalContributions, setTotalContributions] = useState(0);
+  const [totalCommits, setTotalCommits] = useState(0);
+  const [totalPRs, setTotalPRs] = useState(0);
+  const [totalIssues, setTotalIssues] = useState(0);
+  const [totalStars, setTotalStars] = useState(0);
   const [loading, setLoading] = useState(false);
   const [Languages, setLanguages] = useRecoilState(mostUsedLang);
   const inputText = useRecoilValue(inputState);
@@ -50,6 +55,10 @@ const Wrapped = () => {
         return;
       }
       setTotalContributions(res.data.contributions2023);
+      setTotalCommits(res.data.totalCommits);
+      setTotalIssues(res.data.totalIssues)
+      setTotalPRs(res.data.totalPRs);
+      setTotalStars(res.data.totalStars);
     } catch (err) {
       console.log("error aaya", err);
     } finally {
@@ -77,12 +86,15 @@ const Wrapped = () => {
         </>
       )}
       {totalContributions === 0 && (
-        <button onClick={handleClick1}>Get Your Wrapped</button>
+        <>
+        <button onClick={handleClick1}>Get Your Wrapped</button><br /><br/>
+        <img src={gift} width={300} height={250}/>
+        </>
       )}
       {totalContributions !== 0 && (
         <>
           <Confetti width={width} height={height} recycle={!isComplete()} />
-          <WrappedCard />
+          <WrappedCard contributions = {totalContributions} commits = {totalCommits} issues={totalIssues} PRs={totalPRs} stars={totalStars}/>
         </>
       )}
     </>
