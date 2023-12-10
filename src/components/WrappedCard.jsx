@@ -58,9 +58,11 @@ export default function WrappedCard({contributions, commits, issues, PRs, stars}
           <span style={{color:'rgb(75, 207, 167)', fontWeight:'900', fontSize:'1.5rem'}}>Your Most Used Language in 2023</span>
           <PieChart/>
       </div>
-
-      <div>I am fine</div>
-      <div>OK</div>
+      <div className='div1'>
+      <h2>Hy {inputText}, Here is Your <span style={{fontWeight:'900', color:'rgb(35 177 62)'}}>GitHub 2023 Wrapped</span></h2>
+          <span style={{color:'rgb(75, 207, 167)', fontWeight:'900', fontSize:'1.5rem'}}>Your Top 3 Repositories in 2023</span>
+          <p style={{color:'rgba(255,161,22)', fontWeight:'900', fontSize:'1.5rem', marginTop:'4rem'}}> Coming Soon...</p>
+      </div>
     </AwesomeSlider>
     </div>
     </div>

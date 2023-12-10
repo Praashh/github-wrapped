@@ -20,6 +20,7 @@ const Wrapped = () => {
   const [totalPRs, setTotalPRs] = useState(0);
   const [totalIssues, setTotalIssues] = useState(0);
   const [totalStars, setTotalStars] = useState(0);
+  const [topRepo, setTopRepo] =useState([{}]);
   const [loading, setLoading] = useState(false);
   const [Languages, setLanguages] = useRecoilState(mostUsedLang);
   const inputText = useRecoilValue(inputState);
@@ -46,16 +47,30 @@ const Wrapped = () => {
       const lang = await axios.get(
         `https://github-wrapped-one.vercel.app/github-wrapped/api/v1/top-languages/${inputText}`
       );
+      const response = await axios.get(`https://api.github.com/users/${inputText}/repos`);
+      const repos = response.data;
+      if (!response || !response.data || response.status !== 200) {
+        toast.error("Something is Wrong!");
+        return;
+      }
+      repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
+      const top3Repos = repos.slice(0, 3);
+      console.log(`Top 3 repositories of ${inputText}:`);
+      
       console.log("data1", res.data);
       console.log("data2", lang.data.data);
       setLanguages(lang.data.data);
       console.log("setted langs", Languages);
+      // top3Repos.forEach((repo, index) => {
+      //   console.log(`${index + 1}. ${repo.name} - Stars: ${repo.stargazers_count}`);
+      // });
+    
       if (res.data.contributions2023 === "" && lang.data.data == []) {
         toast.error("Invalid Username!");
         return;
       }
       if(res.data.contributions2023 === ''){
-        toast.error("No Contributions Found!");
+        toast.error("Contributions Not Found!");
         return;
       }
       setTotalContributions(res.data.contributions2023);
@@ -63,6 +78,9 @@ const Wrapped = () => {
       setTotalIssues(res.data.totalIssues)
       setTotalPRs(res.data.totalPRs);
       setTotalStars(res.data.totalStars);
+      setTopRepo((prev)=>[...prev, top3Repos]);
+      console.log(top3Repos)
+      console.log('top3 repo ', topRepo)
     } catch (err) {
       console.log("error aaya", err);
     } finally {
