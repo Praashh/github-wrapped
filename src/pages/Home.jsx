@@ -78,7 +78,7 @@ const Home = () => {
         </div>
       )}
       <BackgroundVideo />
-      <p className='team'>Made By -<NavLink to={'/team'} target="_blank">Team Praash</NavLink></p>
+      <p className='team'>Made By -<NavLink to={'/team'}>Team Praash</NavLink></p>
     </>
   );
 };
