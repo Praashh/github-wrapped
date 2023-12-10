@@ -19,8 +19,8 @@ export default function WrappedCard({contributions, commits, issues, PRs, stars}
   return (
     <>
       <div className='share-wrapper'>
-        <button><TwitterShare/><TwitterIcon/></button>
-        <button><LinkedInShare/><LinkedIcon/></button>
+        <button><TwitterShare url={'www.google.com'} text={"Check your github wrap"}/><TwitterIcon/></button>
+        <button><LinkedInShare url={'www.google.com'} text={"Check your github wrap"}/><LinkedIcon/></button>
         
       </div>
       <div className='wrapper'>
