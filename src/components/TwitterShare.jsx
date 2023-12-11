@@ -7,8 +7,8 @@ const TwitterShare = ({ url, text, image }) => {
       <TwitterShareButton
         url={url}
         title={text}
-        via={"yourTwitterHandle"}
-        hashtags={["tag1", "tag2"]}
+        via={"PrashantSony6"}
+        hashtags={["flexYourGithubWrap", "GithubWrapped2023"]}
       >
         Share on
       </TwitterShareButton>
