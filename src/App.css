@@ -98,3 +98,11 @@
   left: 44%;
   bottom: 2%;
 }
+
+.team-image{
+  filter: grayscale(100%); 
+  transition: filter 0.3s ease; 
+}
+.team-image:hover{
+  filter: grayscale(0%); 
+}

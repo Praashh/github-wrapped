@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import gift from "../assets/gift.gif"
+import decImage1 from "../assets/dec-image1.png"
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
@@ -87,10 +88,12 @@ const Wrapped = () => {
       setLoading(false);
     }
     notify();
+    toast("Take Screen-Shot & Share!")
   };
-
+  
   return (
     <>
+    <img src={decImage1} width={500} height={500} style={{position:'absolute',top:'-18%', right:'-9%', zIndex:'-1'}}/>
       {totalContributions === 0 && (
         <>
           <NavLink to="https://github.com" target="_blank">
@@ -102,15 +105,14 @@ const Wrapped = () => {
       )}
       {loading && (
         <>
-          <CircularProgress />
+        <img src={gift} width={300} height={250}/>
           <br />
           <br />
         </>
       )}
       {totalContributions === 0 && (
         <>
-        <button onClick={handleClick1}>Get Your Wrapped</button><br /><br/>
-        <img src={gift} width={300} height={250}/>
+        <button onClick={handleClick1} className='click-me'>Click Me to get your GitHub Wrapped</button><br /><br/>
         </>
       )}
       {totalContributions !== 0 && (
@@ -119,6 +121,7 @@ const Wrapped = () => {
           <WrappedCard contributions = {totalContributions} commits = {totalCommits} issues={totalIssues} PRs={totalPRs} stars={totalStars}/>
         </>
       )}
+        <img src={decImage1} width={500} height={500} style={{position:'absolute',bottom:'-6%', left:'-13%', zIndex:'-1'}}/>
     </>
   );
 };

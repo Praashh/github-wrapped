@@ -19,8 +19,8 @@ export default function WrappedCard({contributions, commits, issues, PRs, stars}
   return (
     <>
       <div className='share-wrapper'>
-        <button><TwitterShare url={'https://github-wrapped.tech/'} text={"GitHub Wrapped 2023"}/><TwitterIcon/></button>
-        <button><LinkedInShare url={'https://github-wrapped.tech/'} text={"GitHub Wrapped 2023"}/><LinkedIcon/></button>
+        <button><TwitterShare url={'Get Your at https://github-wrapped.tech/'} text={"🚀 Just revealed my GitHub Wrap 2023! 🌐✨"}/><TwitterIcon/></button>
+        <button><LinkedInShare url={'https://github-wrapped.tech/'} text={"🚀 Just revealed my GitHub Wrap 2023! 🌐✨"}/><LinkedIcon/></button>
         
       </div>
       <div className='wrapper'>

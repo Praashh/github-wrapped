@@ -1,12 +1,12 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
+import "./MotionSlider.css"
 
 const MotionSlider = () => {
   return (
-    <div style={{ marginTop: "-1rem", marginBottom: "1rem", width: "100%" }}>
+    <div className="motion-responsive">
       <Marquee
         pauseOnHover
-        // style={{ display: "flex", justifyContent: "space-between" }}
       >
         <span
           style={{
