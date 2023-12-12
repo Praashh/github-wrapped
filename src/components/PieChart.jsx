@@ -7,7 +7,7 @@ const PieChart = () => {
   const chartContainer = useRef(null);
   const languages = useRecoilValue(mostUsedLang);
 
-  console.log("langs piechart", languages);
+  // console.log("langs piechart", languages);
   useEffect(() => {
     if (chartContainer && chartContainer.current) {
       const data = {

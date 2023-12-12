@@ -28,7 +28,7 @@ const Wrapped = () => {
   const { width, height } = useWindowSize();
   const [isComplete] = useTimeout(4000);
 
-  console.log("inputText", inputText);
+  // console.log("inputText", inputText);
 
   const notify = () => {
     toast.success("Congratulations!", {
@@ -56,12 +56,12 @@ const Wrapped = () => {
       }
       repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
       const top3Repos = repos.slice(0, 3);
-      console.log(`Top 3 repositories of ${inputText}:`);
+      // console.log(`Top 3 repositories of ${inputText}:`);
       
-      console.log("data1", res.data);
-      console.log("data2", lang.data.data);
+      // console.log("data1", res.data);
+      // console.log("data2", lang.data.data);
       setLanguages(lang.data.data);
-      console.log("setted langs", Languages);
+      // console.log("setted langs", Languages);
       // top3Repos.forEach((repo, index) => {
       //   console.log(`${index + 1}. ${repo.name} - Stars: ${repo.stargazers_count}`);
       // });
@@ -80,10 +80,10 @@ const Wrapped = () => {
       setTotalPRs(res.data.totalPRs);
       setTotalStars(res.data.totalStars);
       setTopRepo((prev)=>[...prev, top3Repos]);
-      console.log(top3Repos)
-      console.log('top3 repo ', topRepo)
+      // console.log(top3Repos)
+      // console.log('top3 repo ', topRepo)
     } catch (err) {
-      console.log("error aaya", err);
+      console.log("error", err);
     } finally {
       setLoading(false);
     }
