@@ -24,7 +24,7 @@ const Team = () => {
         </div>
         <div style={{display:'flex', flexDirection:'column', gap:'9px', marginBottom:'43px',  fontWeight:'900'}}>
             <h2>Zeta</h2>
-            <span style={{color:'white'}}>Intern at openAI</span>
+            <span style={{color:'white'}}>Remote AI Engineer</span>
           </div>
        </NavLink>
        <NavLink to="https://twitter.com/vavishalarya" target='_blank'>
