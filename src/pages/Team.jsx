@@ -6,7 +6,7 @@ import { Avatar } from '@mui/material'
 const Team = () => {
   return (
     <>
-    <span style={{color:"greenyellow", fontWeight:'900', fontSize:'4rem'}}>Team</span>
+    <span style={{color:"greenyellow", fontWeight:'900', fontSize:'4rem'}}>Our Contributor</span>
     <div className='Team-Wrapper'>
        <NavLink to="https://twitter.com/PrashantSony6" target='_blank'>
         <div>
