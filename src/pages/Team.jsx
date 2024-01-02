@@ -18,7 +18,7 @@ const Team = () => {
             <div style={{display:'flex', gap:'10px'}}></div>
           </div>
        </NavLink>
-       <NavLink to="https://twitter.com/codeDev_Piyush" target='_blank'>
+{/*        <NavLink to="https://twitter.com/codeDev_Piyush" target='_blank'>
         <div>
         <Avatar alt="zeta" src="https://pbs.twimg.com/profile_images/1703653723988451328/IglCfMbZ_400x400.jpg" style={{marginBottom:'1rem', width:'150px', height:'150px'}} className='team-image'/>
         </div>
@@ -44,7 +44,7 @@ const Team = () => {
             <h2>Sinchan</h2>
             <span style={{color:'white'}}>Full Stack Developer</span>
           </div>
-       </NavLink>
+       </NavLink> */}
     </div>
     </>
   )
