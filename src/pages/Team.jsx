@@ -18,7 +18,7 @@ const Team = () => {
             <div style={{display:'flex', gap:'10px'}}></div>
           </div>
        </NavLink>
-{/*        <NavLink to="https://twitter.com/codeDev_Piyush" target='_blank'>
+      <NavLink to="https://twitter.com/codeDev_Piyush" target='_blank'>
         <div>
         <Avatar alt="zeta" src="https://pbs.twimg.com/profile_images/1703653723988451328/IglCfMbZ_400x400.jpg" style={{marginBottom:'1rem', width:'150px', height:'150px'}} className='team-image'/>
         </div>
@@ -36,15 +36,6 @@ const Team = () => {
             <span style={{color:'white'}}>M.Tech @IIITA</span>
           </div>
        </NavLink>
-       <NavLink to="https://twitter.com/syndgofficial" target='_blank'>
-        <div>
-        <Avatar alt="Sinchan" src="https://pbs.twimg.com/profile_images/1724815873838596096/CFDtsXcX_400x400.jpg" style={{marginBottom:'1rem', width:'150px', height:'150px'}} className='team-image'/>
-        </div>
-        <div style={{display:'flex', flexDirection:'column', gap:'9px', marginBottom:'43px', fontWeight:'900'}}>
-            <h2>Sinchan</h2>
-            <span style={{color:'white'}}>Full Stack Developer</span>
-          </div>
-       </NavLink> */}
     </div>
     </>
   )
