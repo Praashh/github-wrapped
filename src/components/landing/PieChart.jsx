@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import Chart from "chart.js";
 import { useRecoilValue } from "recoil";
-import { mostUsedLang } from "../atoms/MostUsedLang";
+import { mostUsedLang } from "../../atoms/MostUsedLang";
 
 const PieChart = () => {
   const chartContainer = useRef(null);

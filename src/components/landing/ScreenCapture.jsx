@@ -1,8 +1,8 @@
 import React from "react";
 import html2canvas from "html2canvas";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { imageState } from "../atoms/ImageURL";
-import TwitterShare from "./TwitterShare";
+import { imageState } from "../../atoms/ImageURL";
+import TwitterShare from "../ui/TwitterShare";
 
 const ScreenCapture = () => {
   const [inputURL, setImageURL] = useRecoilState(imageState);

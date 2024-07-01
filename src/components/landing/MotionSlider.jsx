@@ -1,6 +1,5 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
-import "./MotionSlider.css"
 
 const MotionSlider = () => {
   return (
