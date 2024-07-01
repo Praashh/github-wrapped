@@ -10,7 +10,7 @@ import { inputState } from "../atoms/Input";
 import { mostUsedLang } from "../atoms/MostUsedLang";
 import { toast } from "react-toastify";
 import "./Wrapped.css";
-import WrappedCard from "../components/WrappedCard";
+import WrappedCard from "../components/ui/WrappedCard";
 import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
 import { useTimeout } from "react-use";
@@ -93,7 +93,6 @@ const Wrapped = () => {
   
   return (
     <>
-    <img src={decImage1} width={500} height={500} style={{position:'absolute',top:'-18%', right:'-9%', zIndex:'-1'}}/>
       {totalContributions === 0 && (
         <>
           <NavLink to="https://github.com" target="_blank">
@@ -121,7 +120,6 @@ const Wrapped = () => {
           <WrappedCard contributions = {totalContributions} commits = {totalCommits} issues={totalIssues} PRs={totalPRs} stars={totalStars}/>
         </>
       )}
-        <img src={decImage1} width={500} height={500} style={{position:'absolute',bottom:'-6%', left:'-13%', zIndex:'-1'}}/>
     </>
   );
 };
