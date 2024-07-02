@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import gift from "../assets/gift.gif"
-import decImage1 from "../assets/dec-image1.png"
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
-import CircularProgress from "@mui/material/CircularProgress";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { inputState } from "../atoms/Input";
 import { mostUsedLang } from "../atoms/MostUsedLang";
@@ -14,6 +12,7 @@ import WrappedCard from "../components/ui/WrappedCard";
 import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
 import { useTimeout } from "react-use";
+import { Button } from "@mui/material";
 
 const Wrapped = () => {
   const [totalContributions, setTotalContributions] = useState(0);
@@ -21,14 +20,12 @@ const Wrapped = () => {
   const [totalPRs, setTotalPRs] = useState(0);
   const [totalIssues, setTotalIssues] = useState(0);
   const [totalStars, setTotalStars] = useState(0);
-  const [topRepo, setTopRepo] =useState([{}]);
+  const [topRepo, setTopRepo] = useState([{}]);
   const [loading, setLoading] = useState(false);
   const [Languages, setLanguages] = useRecoilState(mostUsedLang);
   const inputText = useRecoilValue(inputState);
   const { width, height } = useWindowSize();
   const [isComplete] = useTimeout(4000);
-
-  // console.log("inputText", inputText);
 
   const notify = () => {
     toast.success("Congratulations!", {
@@ -56,21 +53,13 @@ const Wrapped = () => {
       }
       repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
       const top3Repos = repos.slice(0, 3);
-      // console.log(`Top 3 repositories of ${inputText}:`);
-      
-      // console.log("data1", res.data);
-      // console.log("data2", lang.data.data);
       setLanguages(lang.data.data);
-      // console.log("setted langs", Languages);
-      // top3Repos.forEach((repo, index) => {
-      //   console.log(`${index + 1}. ${repo.name} - Stars: ${repo.stargazers_count}`);
-      // });
-    
+
       if (res.data.contributions2023 === "" && lang.data.data == []) {
         toast.error("Invalid Username!");
         return;
       }
-      if(res.data.contributions2023 === ''){
+      if (res.data.contributions2023 === '') {
         toast.error("Contributions Not Found!");
         return;
       }
@@ -79,9 +68,7 @@ const Wrapped = () => {
       setTotalIssues(res.data.totalIssues)
       setTotalPRs(res.data.totalPRs);
       setTotalStars(res.data.totalStars);
-      setTopRepo((prev)=>[...prev, top3Repos]);
-      // console.log(top3Repos)
-      // console.log('top3 repo ', topRepo)
+      setTopRepo((prev) => [...prev, top3Repos]);
     } catch (err) {
       console.log("error", err);
     } finally {
@@ -90,37 +77,38 @@ const Wrapped = () => {
     notify();
     toast("Take Screen-Shot & Share!")
   };
-  
+
   return (
-    <>
-      {totalContributions === 0 && (
-        <>
-          <NavLink to="https://github.com" target="_blank">
-            <img src={logo} className="logo" alt="Vite logo" />
-          </NavLink>
-          <br />
-          <br />
-        </>
-      )}
-      {loading && (
-        <>
-        <img src={gift} width={300} height={250}/>
-          <br />
-          <br />
-        </>
-      )}
-      {totalContributions === 0 && (
-        <>
-        <button onClick={handleClick1} className='click-me'>Click Me to get your GitHub Wrapped</button><br /><br/>
-        </>
-      )}
-      {totalContributions !== 0 && (
-        <>
-          <Confetti width={width} height={height} recycle={!isComplete()} />
-          <WrappedCard contributions = {totalContributions} commits = {totalCommits} issues={totalIssues} PRs={totalPRs} stars={totalStars}/>
-        </>
-      )}
-    </>
+    <div className="min-h-screen flex justify-center items-center">
+      <div className="bg-white w-1/2 h-96 rounded-lg flex flex-col justify-center items-center">
+        {totalContributions === 0 && (
+          <>
+            <NavLink to="https://github.com" target="_blank">
+              <img src={logo} className="logo" alt="Vite logo" />
+            </NavLink>
+            <br />
+            <br />
+          </>
+        )}
+        {loading && (
+          <>
+            <img src={gift} width={300} height={250} />
+            <br />
+            <br />
+          </>
+        )}
+        {totalContributions === 0 && (
+          <>
+            <Button variant='contained' onClick={handleClick1} className='click-me'>Click Me to get your GitHub Wrapped</Button><br /><br />
+          </>
+        )}
+        {totalContributions !== 0 && (
+          <>
+            <Confetti width={width} height={height} recycle={!isComplete()} />
+            <WrappedCard contributions={totalContributions} commits={totalCommits} issues={totalIssues} PRs={totalPRs} stars={totalStars} />
+          </>
+        )}
+      </div></div>
   );
 };
 

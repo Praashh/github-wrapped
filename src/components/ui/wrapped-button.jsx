@@ -1,14 +1,15 @@
 import React from 'react'
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { Button } from '@mui/material';
 
-const WrapButton = ({setWrappedInput, prev}) => {
+const WrapButton = ({ setWrappedInput }) => {
   return (
     <div>
-      <button onClick={() => setWrappedInput((prev) => !prev)}>
-          <span className="btn">
-            <span>Let's Wrapped</span> <GitHubIcon />
-          </span>
-        </button>
+      <Button variant="contained" onClick={() => setWrappedInput((prev) => !prev)}>
+        <span className="btn">
+          <span>Let's Wrap</span> <GitHubIcon />
+        </span>
+      </Button>
     </div>
   )
 }

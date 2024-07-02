@@ -30,14 +30,15 @@ const Home = () => {
   }, [inputText]);
 
   return (
-    <div  className='min-h-screen bg-cover bg-no-repeat bg-hero-img'>
-      <Hero/>
-      {!wrappedInput ? (
+    <div className="min-h-screen w-[100%]  flex justify-center items-center ">
+      <div className='bg-slate-50 w-1/2 h-96 flex  items-center flex-col rounded-md p-4'>
+        {!wrappedInput ? (
           <WrapButton setWrappedInput={setWrappedInput} />
-      ) : (
-        <Hero handleWrapNow={handleWrapNow} setInputText={setInputText} inputText={inputText}/>
-      )}
-      <p className='team'>Made By -<NavLink to={'https://twitter.com/10Xpraash'}>Praash</NavLink></p>
+        ) : (
+          <Hero handleWrapNow={handleWrapNow} setInputText={setInputText} inputText={inputText} />
+        )}
+        <p className='team'>Made By -<NavLink to={'https://twitter.com/10Xpraash'}>Praash</NavLink></p>
+      </div>
     </div>
   );
 };
