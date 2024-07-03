@@ -3,8 +3,9 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 const Hero = ({ setInputText, handleWrapNow, inputText }) => {
     return (
-        <div className="flex flex-col items-center justify-center duration-150">
-            <div className='flex justify-center items-center gap-3'>
+        <div className="flex flex-col items-center justify-center gap-4 duration-150">
+            <Typography variant='h4' className='font-bold hidden md:block'>Check your GitHub Wrapped</Typography>
+            <div className='flex flex-wrap justify-center items-center gap-3'>
             <TextField
                 id="filled-basic"
                 label="GitHub Username"
@@ -16,7 +17,7 @@ const Hero = ({ setInputText, handleWrapNow, inputText }) => {
             />
             <Button onClick={handleWrapNow} variant='contained'>Wrapped Now</Button>
             </div>
-            <p className='team'>Made By -<NavLink to={'https://twitter.com/10Xpraash'}>Praash</NavLink></p>
+            <p className='absolute bottom-4 duration-150 hover:font-semibold'><NavLink to={'https://twitter.com/10Xpraash'}>Made By Praash</NavLink></p>
         </div>
     )
 }
