@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import gift from "../assets/gift.gif"
 import axios from "axios";
-import { NavLink } from "react-router-dom";
-import logo from "../assets/logo.png";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { inputState } from "../atoms/Input";
 import { mostUsedLang } from "../atoms/MostUsedLang";
 import { toast } from "react-toastify";
-import "./Wrapped.css";
 import WrappedCard from "../components/ui/WrappedCard";
 import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
@@ -80,22 +76,9 @@ const Wrapped = () => {
 
   return (
     <div className="min-h-screen flex justify-center items-center">
-      <div className="bg-white w-1/2 h-96 rounded-lg flex flex-col justify-center items-center">
-        {totalContributions === 0 && (
-          <>
-            <NavLink to="https://github.com" target="_blank">
-              <img src={logo} className="logo" alt="Vite logo" />
-            </NavLink>
-            <br />
-            <br />
-          </>
-        )}
+      <div className="bg-slate-400/70 p-2 backdrop-blur-md text-white/90 z-1 border border-gray-400/30 w-1/2 h-96 rounded-lg flex flex-col justify-center items-center">
         {loading && (
-          <>
-            <img src={gift} width={300} height={250} />
-            <br />
-            <br />
-          </>
+          <span className="loader"></span>
         )}
         {totalContributions === 0 && (
           <>
@@ -104,7 +87,6 @@ const Wrapped = () => {
         )}
         {totalContributions !== 0 && (
           <>
-            <Confetti width={width} height={height} recycle={!isComplete()} />
             <WrappedCard contributions={totalContributions} commits={totalCommits} issues={totalIssues} PRs={totalPRs} stars={totalStars} />
           </>
         )}
