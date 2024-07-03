@@ -28,8 +28,8 @@ const Home = () => {
 
   return (
     <div className="min-h-screen w-[100%]  flex justify-center items-center ">
-      <div className='bg-slate-400/70 p-2 backdrop-blur-md text-white/90 z-1 border border-gray-400/30 md:w-1/2 md:h-96 flex flex-wrap justify-around items-center  rounded-md'>
-      <div className="w-1/2 bg-transparent h-full bg-red-200">
+      <div className='bg-slate-400/70 p-2 backdrop-blur-md text-white/90 z-1 border border-gray-400/30 md:w-1/2 h-96 flex flex-wrap justify-around items-center  rounded-md'>
+      <div className="w-1/2 bg-transparent md:h-full bg-red-200">
           <img src={homeImg} alt="imgHome" className="h-full "/>
       </div>
           <Hero handleWrapNow={handleWrapNow} setInputText={setInputText} inputText={inputText} />

@@ -1,23 +1,14 @@
-import * as React from 'react';
-import githubContribution from "../../assets/logo.png"
 import { inputState } from '../../atoms/Input';
 import { useRecoilValue } from 'recoil';
-import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
-import TwitterShare from './TwitterShare';
-import LinkedInShare from './LinkedInShare';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import LinkedIcon from '@mui/icons-material/LinkedIn';
-import PieChart from '../landing/PieChart';
 
-export default function WrappedCard({contributions, commits, issues, PRs, stars}) {
+export default function WrappedCard({contributions, commits, issues, PRs, stars, username}) {
  
   const inputText =  useRecoilValue(inputState);
-
-
   return (
     <>
       <div className=''>
+        Hello<span className='ml-2'>{username}</span><br />
         totalContributions: {contributions} <br/>
         commits: {commits} <br/>
         Issue: {issues} <br/>

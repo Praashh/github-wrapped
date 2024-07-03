@@ -5,9 +5,6 @@ import { inputState } from "../atoms/Input";
 import { mostUsedLang } from "../atoms/MostUsedLang";
 import { toast } from "react-toastify";
 import WrappedCard from "../components/ui/WrappedCard";
-import useWindowSize from "react-use/lib/useWindowSize";
-import Confetti from "react-confetti";
-import { useTimeout } from "react-use";
 import { Button } from "@mui/material";
 
 const Wrapped = () => {
@@ -20,8 +17,6 @@ const Wrapped = () => {
   const [loading, setLoading] = useState(false);
   const [Languages, setLanguages] = useRecoilState(mostUsedLang);
   const inputText = useRecoilValue(inputState);
-  const { width, height } = useWindowSize();
-  const [isComplete] = useTimeout(4000);
 
   const notify = () => {
     toast.success("Congratulations!", {
@@ -71,7 +66,7 @@ const Wrapped = () => {
       setLoading(false);
     }
     notify();
-    toast("Take Screen-Shot & Share!")
+
   };
 
   return (
@@ -80,15 +75,13 @@ const Wrapped = () => {
         {loading && (
           <span className="loader"></span>
         )}
-        {totalContributions === 0 && (
+        {totalContributions === 0 && !loading  && (
           <>
             <Button variant='contained' onClick={handleClick1} className='click-me'>Click Me to get your GitHub Wrapped</Button><br /><br />
           </>
         )}
         {totalContributions !== 0 && (
-          <>
-            <WrappedCard contributions={totalContributions} commits={totalCommits} issues={totalIssues} PRs={totalPRs} stars={totalStars} />
-          </>
+            <WrappedCard username = {inputText} contributions={totalContributions} commits={totalCommits} issues={totalIssues} PRs={totalPRs} stars={totalStars} />
         )}
       </div></div>
   );
