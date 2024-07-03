@@ -24,7 +24,7 @@ function App() {
       {loading ? (
        <Loader/>  
       ) : (
-        <div className="min-h-screen bg-cover bg-no-repeat bg-hero-img">
+        <div className="min-h-screen bg-cover bg-no-repeat bg-hero-img p-0 m-0">
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home />} />
